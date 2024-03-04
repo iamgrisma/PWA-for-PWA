@@ -1,0 +1,11 @@
+self.addEventListener('sync', function (event) {
+    if (event.tag === 'addPWA') {
+        event.waitUntil(addPWA(event));
+    }
+});
+
+function addPWA(event) {
+    var url = event.registration.sync.URL;
+    // Perform whatever action you want with the URL (e.g., add it as a PWA)
+    console.log('Adding PWA for URL:', url);
+}
