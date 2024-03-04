@@ -26,6 +26,8 @@ function showInstallPrompt() {
 }
 
 function addPWA() {
+    var name = document.getElementById("nameInput").value;
+    var version = document.getElementById("versionInput").value;
     var url = document.getElementById("urlInput").value;
 
     // Check if the browser supports the beforeinstallprompt event
@@ -45,6 +47,8 @@ function addPWA() {
             navigator.serviceWorker.register('service-worker.js')
                 .then(function (registration) {
                     return registration.sync.register('addPWA', {
+                        name: name,
+                        version: version,
                         url: url
                     });
                 })
